@@ -17,6 +17,7 @@ from .agents import SkillManager
 class Voyager:
     def __init__(
         self,
+        mc_host: str = "127.0.0.1",
         mc_port: int = None,
         azure_login: Dict[str, str] = None,
         server_port: int = 3000,
@@ -55,6 +56,7 @@ class Voyager:
         Curriculum agent is the automatic curriculum in paper.
         Critic agent is the self-verification in paper.
         Skill manager is the skill library in paper.
+        :param mc_host: minecraft in-game host address
         :param mc_port: minecraft in-game port
         :param azure_login: minecraft login config
         :param server_port: mineflayer port
@@ -102,6 +104,7 @@ class Voyager:
         """
         # init env
         self.env = VoyagerEnv(
+            mc_host=mc_host,
             mc_port=mc_port,
             azure_login=azure_login,
             server_port=server_port,

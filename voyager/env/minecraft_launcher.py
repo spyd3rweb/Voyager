@@ -24,6 +24,7 @@ class MinecraftInstance:
         self.version = version
         self.log_path = log_path
         self.mc_dir = minecraft_launcher_lib.utils.get_minecraft_directory()
+        self.host = "127.0.0.1"
         self.port = None
 
         def stop_mineflayer():
@@ -115,7 +116,7 @@ class MinecraftInstance:
         match = re.search(pattern, self.mc_process.ready_line)
         if match:
             self.port = int(match.group(1))
-            print("The mc server is listening on port", self.port)
+            print(f"The mc server is listening on address port {self.host}:{self.port}")
         else:
             raise RuntimeError("Port not found")
 
